@@ -37,6 +37,8 @@ CLOUDFLARE_ACCOUNT_ID
 CLOUDFLARE_API_TOKEN
 ```
 
+配置完成后，每次推送到 `main` 分支都会自动执行构建并部署到 Cloudflare Workers。
+
 ## 快速开始
 
 ```bash
@@ -117,4 +119,4 @@ src/
 - 不要手动修改 `src/routeTree.gen.ts`，它由 TanStack Start 自动生成。
 - 服务端密钥、官方 API 调用、文件系统或其他敏感逻辑必须放在 `.server.ts` 或 server route 中。
 - 新增依赖前先全局检索是否已有可复用实现。
-- Cloudflare Worker 名称在 `wrangler.jsonc` 的 `name` 字段中配置；当前为 `id-photo-master`。
+- Cloudflare Worker 名称在 `wrangler.jsonc` 的 `name` 字段中配置；当前为 `id-photo-master-cn`。
