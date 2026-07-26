@@ -7,7 +7,7 @@
 - TanStack Start / TanStack Router
 - React 19 + TypeScript 5
 - Vite 8 + Cloudflare Vite Plugin
-- Tailwind CSS 4 + shadcn/ui
+- Tailwind CSS 4
 - 火山方舟官方生图 API：`doubao-seedream-4-5-251128`
 
 ## 环境变量
@@ -68,13 +68,11 @@ src/
 │   ├── __root.tsx        # 根文档、HeadContent、Scripts
 │   ├── index.tsx         # 主页面
 │   └── api/optimize.ts   # POST /api/optimize
-├── components/           # 业务组件与 shadcn/ui
-├── hooks/
+├── components/           # 业务组件
 ├── lib/
 │   ├── seedream.server.ts # 火山方舟官方 API 调用
 │   ├── clothing-data.ts
-│   ├── prompt.ts
-│   └── utils.ts
+│   └── prompt.ts
 ├── styles/globals.css
 ├── types/index.ts
 └── router.tsx

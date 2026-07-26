@@ -7,7 +7,6 @@
 - **Deploy**: Cloudflare Workers + GitHub Actions
 - **Core**: React 19
 - **Language**: TypeScript 5
-- **UI 组件**: shadcn/ui (基于 Radix UI)
 - **Styling**: Tailwind CSS 4
 - **AI 图像生成**: 火山方舟官方 Images API，模型 `doubao-seedream-4-5-251128`
 
@@ -26,18 +25,15 @@
 
 ```text
 ├── public/                 # 静态资源
-├── scripts/                # 构建与启动脚本
 ├── src/
 │   ├── routes/             # TanStack Start 文件路由
 │   │   ├── __root.tsx      # 根文档、HeadContent、Scripts
 │   │   ├── index.tsx       # 主页面
 │   │   └── api/optimize.ts # POST /api/optimize
-│   ├── components/         # 业务组件与 shadcn/ui
-│   ├── hooks/              # 自定义 Hooks
+│   ├── components/         # 业务组件
 │   ├── lib/                # 工具库
 │   │   ├── seedream.server.ts # 官方火山方舟生图 API，仅服务端导入
-│   │   ├── prompt.ts
-│   │   └── utils.ts
+│   │   └── prompt.ts
 │   ├── styles/globals.css  # 全局样式
 │   ├── types/index.ts
 │   └── router.tsx          # Router factory
