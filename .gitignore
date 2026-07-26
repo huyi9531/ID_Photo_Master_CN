@@ -104,9 +104,6 @@ Desktop.ini
 .turbo
 .wrangler/
 
-.coze-logs
-.cozeproj/reduction
-
 # Preview files
 .preview
 .codegraph
