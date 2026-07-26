@@ -26,13 +26,10 @@ interface ArkImageGenerationResponse {
 }
 
 function getArkApiKey(): string {
-  const apiKey =
-    process.env.ARK_API_KEY ??
-    process.env.VOLCENGINE_API_KEY ??
-    process.env.IMAGE_API_KEY
+  const apiKey = process.env.ARK_API_KEY
 
   if (!apiKey) {
-    throw new Error("ARK_API_KEY, VOLCENGINE_API_KEY, or IMAGE_API_KEY is not configured")
+    throw new Error("ARK_API_KEY is not configured")
   }
 
   return apiKey

@@ -1,6 +1,2 @@
 # Required for local image generation and the Cloudflare Worker runtime.
 ARK_API_KEY=
-
-# Optional compatibility fallbacks for existing deployments.
-# VOLCENGINE_API_KEY=
-# IMAGE_API_KEY=

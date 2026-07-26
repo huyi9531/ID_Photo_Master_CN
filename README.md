@@ -12,19 +12,15 @@
 
 ## 环境变量
 
-服务端生图接口需要配置以下任一变量：
+服务端生图接口需要配置 `ARK_API_KEY`：
 
 ```bash
 ARK_API_KEY=你的火山方舟 API Key
-# 或
-VOLCENGINE_API_KEY=你的火山方舟 API Key
-# 兼容旧部署，也可用
-IMAGE_API_KEY=你的火山方舟 API Key
 ```
 
 密钥只在 `src/lib/seedream.server.ts` 中读取，不会进入客户端 bundle。
 
-部署到 Cloudflare Workers 时，必须把 `ARK_API_KEY` 设置为 Worker Secret；否则网站可以打开，但图片生成会失败。当前也兼容已有的 `VOLCENGINE_API_KEY` 或 `IMAGE_API_KEY`：
+部署到 Cloudflare Workers 时，必须把 `ARK_API_KEY` 设置为 Worker Secret；否则网站可以打开，但图片生成会失败：
 
 ```bash
 pnpm wrangler secret put ARK_API_KEY

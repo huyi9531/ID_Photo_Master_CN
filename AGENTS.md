@@ -75,11 +75,11 @@ pnpm run deploy
 ## AI 图像生成 API 规范
 
 - 使用火山方舟官方接口：`POST https://ark.cn-beijing.volces.com/api/v3/images/generations`。
-- 仅在服务端读取密钥，优先使用环境变量 `ARK_API_KEY`，兼容 `VOLCENGINE_API_KEY` 和旧部署的 `IMAGE_API_KEY`。
+- 仅在服务端读取环境变量 `ARK_API_KEY`。
 - 固定模型：`doubao-seedream-4-5-251128`。
 - 固定输出：`size: "3072x4096"`、`response_format: "url"`、`watermark: false`。
 - 前端和外部调用仍使用 `POST /api/optimize`。
-- Cloudflare 线上运行时推荐用 `pnpm wrangler secret put ARK_API_KEY` 设置 Worker Secret；已有 `IMAGE_API_KEY` 可作为兼容 fallback。
+- Cloudflare 线上运行时用 `pnpm wrangler secret put ARK_API_KEY` 设置 Worker Secret。
 - GitHub Actions 部署凭据只放仓库 Secrets：`CLOUDFLARE_ACCOUNT_ID`、`CLOUDFLARE_API_TOKEN`。
 
 ### POST /api/optimize
