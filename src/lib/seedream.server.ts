@@ -52,7 +52,12 @@ export async function generateImage({
       body: JSON.stringify({
         model: IMAGE_GENERATION_MODEL,
         prompt,
-        input_references: [imageBase64],
+        input_references: [
+          {
+            type: "image_url",
+            image_url: { url: imageBase64 },
+          },
+        ],
         aspect_ratio: IMAGE_GENERATION_ASPECT_RATIO,
         resolution: IMAGE_GENERATION_RESOLUTION,
         n: 1,
