@@ -1,6 +1,6 @@
 # 证照优化大师
 
-基于 TanStack Start + Vite + Nitro 的证件照优化工具。用户上传正面人像，选择背景色和服装后，后端直连火山方舟官方 Images API 生成标准证件照。
+基于 TanStack Start + Vite + Nitro 的证件照优化工具。用户上传正面人像，选择背景色和服装后，后端通过 OpenRouter 生成标准证件照。
 
 ## 技术栈
 
@@ -8,22 +8,22 @@
 - React 19 + TypeScript 5
 - Vite 8 + Cloudflare Vite Plugin
 - Tailwind CSS 4
-- 火山方舟官方生图 API：`doubao-seedream-4-5-251128`
+- OpenRouter 图像 API：`bytedance-seed/seedream-4.5`
 
 ## 环境变量
 
-服务端生图接口需要配置 `ARK_API_KEY`：
+服务端生图接口需要配置 `OPENROUTER_API_KEY`：
 
 ```bash
-ARK_API_KEY=你的火山方舟 API Key
+OPENROUTER_API_KEY=你的 OpenRouter API Key
 ```
 
 密钥只在 `src/lib/seedream.server.ts` 中读取，不会进入客户端 bundle。
 
-部署到 Cloudflare Workers 时，必须把 `ARK_API_KEY` 设置为 Worker Secret；否则网站可以打开，但图片生成会失败：
+部署到 Cloudflare Workers 时，必须把 `OPENROUTER_API_KEY` 设置为 Worker Secret；否则网站可以打开，但图片生成会失败：
 
 ```bash
-pnpm wrangler secret put ARK_API_KEY
+pnpm wrangler secret put OPENROUTER_API_KEY
 ```
 
 GitHub Actions 自动部署还需要在 GitHub repository secrets 中配置：
@@ -70,7 +70,7 @@ src/
 │   └── api/optimize.ts   # POST /api/optimize
 ├── components/           # 业务组件
 ├── lib/
-│   ├── seedream.server.ts # 火山方舟官方 API 调用
+│   ├── seedream.server.ts # OpenRouter Seedream API 调用
 │   ├── clothing-data.ts
 │   └── prompt.ts
 ├── styles/globals.css

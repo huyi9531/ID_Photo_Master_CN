@@ -1,2 +1,2 @@
 # Required for local image generation and the Cloudflare Worker runtime.
-ARK_API_KEY=
+OPENROUTER_API_KEY=

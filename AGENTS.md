@@ -8,7 +8,7 @@
 - **Core**: React 19
 - **Language**: TypeScript 5
 - **Styling**: Tailwind CSS 4
-- **AI 图像生成**: 火山方舟官方 Images API，模型 `doubao-seedream-4-5-251128`
+- **AI 图像生成**: OpenRouter Images API，模型 `bytedance-seed/seedream-4.5`
 
 ## 项目说明
 
@@ -19,7 +19,7 @@
 1. **图片上传**: 支持拖拽和点击上传，接受 JPG/PNG 格式，最大 10MB
 2. **背景颜色选择**: 白色、蓝色、红色三种标准证件照背景
 3. **服装选择**: 通用/男款/女款服装选项
-4. **AI 证件照生成**: 使用 `doubao-seedream-4-5-251128`，`3072x4096`，无水印
+4. **AI 证件照生成**: 使用 `bytedance-seed/seedream-4.5`，`3:4`、`4K` 输出
 
 ## 目录结构
 
@@ -32,7 +32,7 @@
 │   │   └── api/optimize.ts # POST /api/optimize
 │   ├── components/         # 业务组件
 │   ├── lib/                # 工具库
-│   │   ├── seedream.server.ts # 官方火山方舟生图 API，仅服务端导入
+│   │   ├── seedream.server.ts # OpenRouter Seedream API，仅服务端导入
 │   │   └── prompt.ts
 │   ├── styles/globals.css  # 全局样式
 │   ├── types/index.ts
@@ -70,12 +70,12 @@ pnpm run deploy
 
 ## AI 图像生成 API 规范
 
-- 使用火山方舟官方接口：`POST https://ark.cn-beijing.volces.com/api/v3/images/generations`。
-- 仅在服务端读取环境变量 `ARK_API_KEY`。
-- 固定模型：`doubao-seedream-4-5-251128`。
-- 固定输出：`size: "3072x4096"`、`response_format: "url"`、`watermark: false`。
+- 使用 OpenRouter 图像接口：`POST https://openrouter.ai/api/v1/images`。
+- 仅在服务端读取环境变量 `OPENROUTER_API_KEY`。
+- 固定模型：`bytedance-seed/seedream-4.5`。
+- 固定输出：`aspect_ratio: "3:4"`、`resolution: "4K"`、`n: 1`，并将 Base64 结果转换为 data URL。
 - 前端和外部调用仍使用 `POST /api/optimize`。
-- Cloudflare 线上运行时用 `pnpm wrangler secret put ARK_API_KEY` 设置 Worker Secret。
+- Cloudflare 线上运行时用 `pnpm wrangler secret put OPENROUTER_API_KEY` 设置 Worker Secret。
 - GitHub Actions 部署凭据只放仓库 Secrets：`CLOUDFLARE_ACCOUNT_ID`、`CLOUDFLARE_API_TOKEN`。
 
 ### POST /api/optimize
