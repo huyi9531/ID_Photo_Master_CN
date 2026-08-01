@@ -4,6 +4,16 @@
   "compatibility_date": "2026-07-06",
   "compatibility_flags": ["nodejs_compat"],
   "main": "@tanstack/react-start/server-entry",
+  "r2_buckets": [
+    {
+      "binding": "IMAGE_BUCKET",
+      "bucket_name": "aiconductor"
+    }
+  ],
+  "vars": {
+    "R2_IMAGE_PREFIX": "temporary_90/",
+    "R2_PUBLIC_BASE_URL": "https://r2.aiconductor.top"
+  },
   "observability": {
     "enabled": true
   }

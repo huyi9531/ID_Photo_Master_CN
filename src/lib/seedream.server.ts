@@ -1,4 +1,5 @@
 import "@tanstack/react-start/server-only"
+import { env } from "cloudflare:workers"
 
 export const IMAGE_GENERATION_MODEL = "bytedance-seed/seedream-4.5"
 
@@ -22,6 +23,51 @@ interface OpenRouterImageGenerationResponse {
     code?: string
     type?: string
   }
+}
+
+const DEFAULT_IMAGE_CONTENT_TYPE = "image/png"
+
+function getImageExtension(contentType: string): string {
+  switch (contentType) {
+    case "image/jpeg":
+      return "jpg"
+    case "image/webp":
+      return "webp"
+    case "image/png":
+      return "png"
+    default:
+      return "png"
+  }
+}
+
+function decodeBase64Image(base64Image: string): Uint8Array {
+  const binaryImage = atob(base64Image)
+  const bytes = new Uint8Array(binaryImage.length)
+
+  for (let index = 0; index < binaryImage.length; index += 1) {
+    bytes[index] = binaryImage.charCodeAt(index)
+  }
+
+  return bytes
+}
+
+async function storeGeneratedImage({
+  base64Image,
+  contentType,
+}: {
+  base64Image: string
+  contentType: string
+}): Promise<string> {
+  const imageKey = `${env.R2_IMAGE_PREFIX}${crypto.randomUUID()}.${getImageExtension(contentType)}`
+
+  await env.IMAGE_BUCKET.put(imageKey, decodeBase64Image(base64Image), {
+    httpMetadata: {
+      contentType,
+      cacheControl: "public, max-age=86400",
+    },
+  })
+
+  return new URL(imageKey, `${env.R2_PUBLIC_BASE_URL}/`).toString()
 }
 
 function getOpenRouterApiKey(): string {
@@ -92,7 +138,10 @@ export async function generateImage({
       throw new Error("OpenRouter did not return generated image data")
     }
 
-    return `data:${resultImage.media_type ?? "image/png"};base64,${resultImage.b64_json}`
+    return await storeGeneratedImage({
+      base64Image: resultImage.b64_json,
+      contentType: resultImage.media_type ?? DEFAULT_IMAGE_CONTENT_TYPE,
+    })
   } catch (generationError: unknown) {
     console.error("OpenRouter Seedream image generation request failed", {
       model: IMAGE_GENERATION_MODEL,

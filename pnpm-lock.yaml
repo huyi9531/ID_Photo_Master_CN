@@ -29,7 +29,7 @@ importers:
     devDependencies:
       '@cloudflare/vite-plugin':
         specifier: 1.43.0
-        version: 1.43.0(vite@8.1.3(@types/node@20.19.30)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.46.2)(tsx@4.23.0))(workerd@1.20260701.1)(wrangler@4.107.0)
+        version: 1.43.0(vite@8.1.3(@types/node@20.19.30)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.46.2)(tsx@4.23.0))(workerd@1.20260701.1)(wrangler@4.107.0(@cloudflare/workers-types@4.20260701.1))
       '@eslint/js':
         specifier: 9.39.2
         version: 9.39.2
@@ -44,7 +44,7 @@ importers:
         version: 19.2.10
       '@types/react-dom':
         specifier: ^19
-        version: 19.2.3(@types/react@19.2.10)
+        version: 19.2.4(@types/react@19.2.10)
       '@vitejs/plugin-react':
         specifier: ^6.0.3
         version: 6.0.3(vite@8.1.3(@types/node@20.19.30)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.46.2)(tsx@4.23.0))
@@ -74,7 +74,7 @@ importers:
         version: 8.1.3(@types/node@20.19.30)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.46.2)(tsx@4.23.0)
       wrangler:
         specifier: 4.107.0
-        version: 4.107.0
+        version: 4.107.0(@cloudflare/workers-types@4.20260701.1)
 
 packages:
 
@@ -198,6 +198,9 @@ packages:
     engines: {node: '>=16'}
     cpu: [x64]
     os: [win32]
+
+  '@cloudflare/workers-types@4.20260701.1':
+    resolution: {integrity: sha512-eGZ+PWPlu/yUxH+BJoplV45oSA709sjYFYr2kjrqSo+601qE15X4tsuZcPz1KE6Fb3ObGA9d9ZXn53n34NtyiA==}
 
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
@@ -987,8 +990,8 @@ packages:
   '@types/node@20.19.39':
     resolution: {integrity: sha512-orrrD74MBUyK8jOAD/r0+lfa1I2MO6I+vAkmAWzMYbCcgrN4lCrmK52gRFQq/JRxfYPfonkr4b0jcY7Olqdqbw==}
 
-  '@types/react-dom@19.2.3':
-    resolution: {integrity: sha512-jp2L/eY6fn+KgVVQAOqYItbF0VY/YApe5Mz2F0aykSO8gx31bYCZyvSeYxCHKvzHG5eZjc+zyaS5BrBWya2+kQ==}
+  '@types/react-dom@19.2.4':
+    resolution: {integrity: sha512-Bsc+QHgp+P/F02XDzNCY9jnZNCUuLki36KT7VKrTXXLdHf+vHMNZnW1rVu5DNW/rCK+fya3DATySbLM4yhtKUw==}
     peerDependencies:
       '@types/react': ^19.2.0
 
@@ -2223,13 +2226,13 @@ snapshots:
     optionalDependencies:
       workerd: 1.20260701.1
 
-  '@cloudflare/vite-plugin@1.43.0(vite@8.1.3(@types/node@20.19.30)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.46.2)(tsx@4.23.0))(workerd@1.20260701.1)(wrangler@4.107.0)':
+  '@cloudflare/vite-plugin@1.43.0(vite@8.1.3(@types/node@20.19.30)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.46.2)(tsx@4.23.0))(workerd@1.20260701.1)(wrangler@4.107.0(@cloudflare/workers-types@4.20260701.1))':
     dependencies:
       '@cloudflare/unenv-preset': 2.16.1(unenv@2.0.0-rc.24)(workerd@1.20260701.1)
       miniflare: 4.20260701.0
       unenv: 2.0.0-rc.24
       vite: 8.1.3(@types/node@20.19.30)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.46.2)(tsx@4.23.0)
-      wrangler: 4.107.0
+      wrangler: 4.107.0(@cloudflare/workers-types@4.20260701.1)
       ws: 8.21.0
     transitivePeerDependencies:
       - bufferutil
@@ -2249,6 +2252,9 @@ snapshots:
     optional: true
 
   '@cloudflare/workerd-windows-64@1.20260701.1':
+    optional: true
+
+  '@cloudflare/workers-types@4.20260701.1':
     optional: true
 
   '@cspotcode/source-map-support@0.8.1':
@@ -2943,7 +2949,7 @@ snapshots:
       undici-types: 6.21.0
     optional: true
 
-  '@types/react-dom@19.2.3(@types/react@19.2.10)':
+  '@types/react-dom@19.2.4(@types/react@19.2.10)':
     dependencies:
       '@types/react': 19.2.10
 
@@ -4014,7 +4020,7 @@ snapshots:
       '@cloudflare/workerd-linux-arm64': 1.20260701.1
       '@cloudflare/workerd-windows-64': 1.20260701.1
 
-  wrangler@4.107.0:
+  wrangler@4.107.0(@cloudflare/workers-types@4.20260701.1):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.5.0
       '@cloudflare/unenv-preset': 2.16.1(unenv@2.0.0-rc.24)(workerd@1.20260701.1)
@@ -4025,6 +4031,7 @@ snapshots:
       unenv: 2.0.0-rc.24
       workerd: 1.20260701.1
     optionalDependencies:
+      '@cloudflare/workers-types': 4.20260701.1
       fsevents: 2.3.3
     transitivePeerDependencies:
       - bufferutil

@@ -13,6 +13,7 @@
     "ts-check": "pnpm run typecheck",
     "lint:build": "eslint . --quiet",
     "validate": "pnpm run typecheck && pnpm run lint:build",
+    "cf-typegen": "wrangler types",
     "deploy": "pnpm run build && wrangler deploy",
     "deploy:dry-run": "pnpm run build && wrangler deploy --dry-run"
   },

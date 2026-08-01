@@ -73,9 +73,12 @@ pnpm run deploy
 - 使用 OpenRouter 图像接口：`POST https://openrouter.ai/api/v1/images`。
 - 仅在服务端读取环境变量 `OPENROUTER_API_KEY`。
 - 固定模型：`bytedance-seed/seedream-4.5`。
-- 固定输出：`aspect_ratio: "3:4"`、`resolution: "2K"`、`n: 1`，并将 Base64 结果转换为 data URL。
+- 固定输出：`aspect_ratio: "3:4"`、`resolution: "2K"`、`n: 1`；将 OpenRouter 返回的 Base64 图片写入 R2 Bucket `aiconductor` 的 `temporary_90/` 路径，并返回 `https://r2.aiconductor.top/...` URL。
 - 前端和外部调用仍使用 `POST /api/optimize`。
 - Cloudflare 线上运行时用 `pnpm wrangler secret put OPENROUTER_API_KEY` 设置 Worker Secret。
+- R2 Binding 名称为 `IMAGE_BUCKET`，公开域名和路径前缀由 `wrangler.jsonc` 的 `R2_PUBLIC_BASE_URL`、`R2_IMAGE_PREFIX` 配置；无需 R2 API Key。
+- 在 Cloudflare R2 控制台为 `temporary_90/` 配置生命周期规则，90 天后删除对象。
+- 修改 `wrangler.jsonc` 中的 Binding 后运行 `pnpm run cf-typegen` 更新 `worker-configuration.d.ts`。
 - GitHub Actions 部署凭据只放仓库 Secrets：`CLOUDFLARE_ACCOUNT_ID`、`CLOUDFLARE_API_TOKEN`。
 
 ### POST /api/optimize
