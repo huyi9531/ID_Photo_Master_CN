@@ -19,7 +19,7 @@
 1. **图片上传**: 支持拖拽和点击上传，接受 JPG/PNG 格式，最大 10MB
 2. **背景颜色选择**: 白色、蓝色、红色三种标准证件照背景
 3. **服装选择**: 通用/男款/女款服装选项
-4. **AI 证件照生成**: 使用 `bytedance-seed/seedream-4.5`，`3:4`、`4K` 输出
+4. **AI 证件照生成**: 使用 `bytedance-seed/seedream-4.5`，`3:4`、`2K` 输出
 
 ## 目录结构
 
@@ -73,7 +73,7 @@ pnpm run deploy
 - 使用 OpenRouter 图像接口：`POST https://openrouter.ai/api/v1/images`。
 - 仅在服务端读取环境变量 `OPENROUTER_API_KEY`。
 - 固定模型：`bytedance-seed/seedream-4.5`。
-- 固定输出：`aspect_ratio: "3:4"`、`resolution: "4K"`、`n: 1`，并将 Base64 结果转换为 data URL。
+- 固定输出：`aspect_ratio: "3:4"`、`resolution: "2K"`、`n: 1`，并将 Base64 结果转换为 data URL。
 - 前端和外部调用仍使用 `POST /api/optimize`。
 - Cloudflare 线上运行时用 `pnpm wrangler secret put OPENROUTER_API_KEY` 设置 Worker Secret。
 - GitHub Actions 部署凭据只放仓库 Secrets：`CLOUDFLARE_ACCOUNT_ID`、`CLOUDFLARE_API_TOKEN`。

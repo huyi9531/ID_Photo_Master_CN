@@ -4,7 +4,7 @@ export const IMAGE_GENERATION_MODEL = "bytedance-seed/seedream-4.5"
 
 const OPENROUTER_IMAGE_GENERATION_URL = "https://openrouter.ai/api/v1/images"
 const IMAGE_GENERATION_ASPECT_RATIO = "3:4"
-const IMAGE_GENERATION_RESOLUTION = "4K"
+const IMAGE_GENERATION_RESOLUTION = "2K"
 const IMAGE_GENERATION_TIMEOUT_MS = 90_000
 
 interface GenerateImageOptions {
