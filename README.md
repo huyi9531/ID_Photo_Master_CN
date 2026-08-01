@@ -20,7 +20,7 @@ OPENROUTER_API_KEY=你的 OpenRouter API Key
 
 密钥只在 `src/lib/seedream.server.ts` 中读取，不会进入客户端 bundle。
 
-生成成功的证件照会写入 R2 Bucket `aiconductor` 的 `temporary_90/` 路径，并返回 `https://r2.aiconductor.top/...` URL。R2 Binding、公开域名和路径前缀在 `wrangler.jsonc` 中配置，不需要额外的 R2 API Key。请在 Cloudflare R2 控制台为 `temporary_90/` 创建生命周期规则，在对象创建 90 天后删除。
+生成成功的证件照会写入 R2 Bucket `aiconductor` 的 `temporary_90/` 路径，并返回 `https://file.aiconductor.top/...` URL。R2 Binding、公开域名和路径前缀在 `wrangler.jsonc` 中配置，不需要额外的 R2 API Key。请在 Cloudflare R2 控制台为 `temporary_90/` 创建生命周期规则，在对象创建 90 天后删除。
 
 修改 `wrangler.jsonc` 中的 Binding 后，运行以下命令同步生成 Worker 类型：
 
@@ -104,7 +104,7 @@ src/
 
 ```json
 {
-  "resultImageUrl": "https://r2.aiconductor.top/temporary_90/..."
+  "resultImageUrl": "https://file.aiconductor.top/temporary_90/..."
 }
 ```
 
